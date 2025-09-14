@@ -8,18 +8,24 @@ def dice_simulation():
     # https://numpy.org/doc/2.1/reference/random/generated/numpy.random.randint.html
     dice = np.random.randint(1, 7, 20)
     print("掷骰子20次:", dice)
-    
+
     # 统计每个点数的频率
     unique_values, counts = np.unique(dice, return_counts=True)
-    
+
     # 创建完整的频率表（1-6）
     frequency = np.zeros(6, dtype=int)
     for value, count in zip(unique_values, counts):
         frequency[value - 1] = count
-    
+
     print("\n点数频率统计:")
     for i in range(6):
         print(f"点数 {i + 1}: {frequency[i]} 次")
+
+    # 大样本统计期望和方差
+    x = np.random.randint(1, 7, 1000)
+    print(f"\n大样本统计（1000次）:")
+    print("期望:", np.mean(x))
+    print("方差:", np.var(x))
 
 def normal_distribution():
     x = np.random.normal(loc=0, scale=1, size=1000)  # 标准正态分布
